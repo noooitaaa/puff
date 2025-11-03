@@ -1,46 +1,163 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puff</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
 
-    <h1>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</h1>
+    <style>
+      a {
+        text-decoration: none;
+        color: black;
+        cursor: crosshair;
+      }
+      a:hover, a:visited {
+        text-decoration: none;
+        color: black;
+      }
 
-    <div class="img-row">
-      <img src="images/image1.jpg" class="imgh" alt="image1">
-    </div>
-    <div class="txt">
-      Testo segnaposto per immagine 1. Breve descrizione o didascalia in Times New Roman.
-    </div>
+      body {
+        margin: 0;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: normal;
+        background-color: white;
+        font-size: 12px;
+        color: black;
+      }
 
-    <div class="img-row">
+      .imgv {
+        height: 80vh;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .imgh {
+        width: 60vw;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .txt {
+        margin-top: 8px;
+        text-align: left;
+        width: 60vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer1 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 8px 0 10px 10px;
+        color: black;
+      }
+
+      .footer2 {
+        text-align: right;
+        top: 0;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        margin-left: 100px;
+        color: black;
+      }
+
+      .clients {
+        bottom: 0;
+        padding-top: 200px;
+        padding-bottom: 100px;
+        margin: 10px;
+        text-align: center;
+      }
+
+      .container {
+        margin-top: 15vh;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 840px) {
+        .imgv, .imgh {
+          width: 100vw;
+          height: auto;
+        }
+        .txt {
+          width: 90vw;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <img src="images/image1.jpg" class="imgv" alt="image1">
+      <div class="txt">radio spugna is an amateur, informal, and precarious radio station, a sound space
+that comes to life in Rumore, the extra-didactic venue of ISIA in Urbino.
+The sponge is a porous and relational element: in its highly precarious nature, we
+deeply recognize ourselves.
+We believe that radio is a powerful social and cultural device, capable of positioning
+itself and acting between the public and private spheres. This is why we consider
+it the best medium to address the issue of precariousness through a horizontal,
+peer-to-peer approach. The radio offers expanded programming, subject to con-
+tamination or collaboration: topics range from self-education, books, projects, wi-
+despread precarity, and music.</div>
+
       <img src="images/image2.jpg" class="imgh" alt="image2">
-    </div>
-    <div class="txt">
-      Testo segnaposto per immagine 2. Breve descrizione o didascalia in Times New Roman.
-    </div>
+      <div class="txt">AG Fronzoni. Il progetto tra bianco nero is a monographic research about the ita-
+lian graphic designer AG Fronzoni. Thanks to the access to different archives we
+were able to collect and photograph part of his work in its original form.
+The book is divided into two sections: Documenti, a collection of essays and in-
+terviews around the figure of AGF, and Progetti, containing posters, editorial and
+branding works, product design, and architecture projects.
+The materials are presented to best convey the nature of the project, using pho-
+tographs that either depict the entire object or show it within its original context,
+marked by a yellow sticker.
+The final pages of the book, distinguished by the use of yellow paper, feature the
+text Grafica Italiana dal 1945 a oggi by Carlo Vinti. In these pages, a system has
+been devised to facilitate the reader’s quick identification of the mentioned names.</div>
 
-    <!-- Esempio con due immagini sulla stessa riga -->
-    <div class="img-row two">
-      <img src="images/image1.jpg" class="imgh" alt="image1">
-      <img src="images/image2.jpg" class="imgh" alt="image2">
-    </div>
-    <div class="txt">
-      Testo segnaposto per due immagini affiancate. Descrizione o nota.
-    </div>
-
-    <div class="img-row">
       <img src="images/image3.jpg" class="imgh" alt="image3">
-    </div>
-    <div class="txt">
-      Testo segnaposto per immagine 3. Breve descrizione o didascalia.
+      <div class="txt">Testo segnaposto per immagine 3</div>
+
     </div>
 
-  </div>
-</body>
+    <div class="footer1">
+      <table>
+        <tr>
+          <td style="width:50vw;">
+            Noa Merlini, Agnese Pozzobon, Martina Valente – Studios<br>
+            Graphic designer and Creative development<br>
+            Milan, Italy<br>
+          </td>
+          <td style="width:50vw; text-align:right; padding-right:10px;">
+            <a href="mailto:noa@example.com">Mail</a><br>
+            <a href="https://instagram.com/">Instagram</a>
+            <div id="div_horloge"></div>
+
+            <script>
+              window.onload = function() { horloge('div_horloge'); };
+              function horloge(el) {
+                if (typeof el == "string") { el = document.getElementById(el); }
+                function actualiser() {
+                  var date = new Date();
+                  var str = date.getHours();
+                  str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+                  str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
+                  el.innerHTML = str;
+                }
+                actualiser();
+                setInterval(actualiser, 1000);
+              }
+            </script>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="clients">
+      Merci<br><br>
+      Testo segnaposto per crediti, clienti o collaboratori.<br>
+      (Aggiungi qui i nomi o lascialo vuoto)
+    </div>
+  </body>
 </html>
