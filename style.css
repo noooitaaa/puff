@@ -40,11 +40,11 @@ body {
   width: 60vw;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 60px; /* Distanza aumentata (30+30) */
+  margin-bottom: 60px; /* Distanza aumentata */
 }
 
 /* ------------------------------------- */
-/* 🔝 HEADER FISSO (CLASSE .footer1) - Stile "SILOE" */
+/* 🔝 HEADER FISSO (CLASSE .footer1) - SOLUZIONE FLEXBOX */
 /* ------------------------------------- */
 
 .footer1 {
@@ -60,14 +60,12 @@ body {
   padding: 8px 10px 10px 10px; 
   margin: 0; 
   
-  /* ✨ MODIFICHE: Stile invertito senza sfondo */
-  background-color: transparent; /* Rimosso sfondo bianco */
+  background-color: transparent; /* Stile "Siloe" */
   z-index: 1000; 
-  color: white; /* Testo bianco */
-  mix-blend-mode: difference; /* Effetto inversione */
+  color: white; 
+  mix-blend-mode: difference; 
 }
 
-/* ✨ NUOVA REGOLA per i link nell'header */
 .footer1 a {
     color: white;
     mix-blend-mode: difference;
@@ -82,9 +80,8 @@ body {
 }
 
 .container {
-  /* ✨ MODIFICA: Rimosso padding-top, non serve più */
-  padding-top: 0; 
-  margin-top: 40px;  /* Spazio ridotto a 40px fissi */
+  padding-top: 0; /* Rimosso padding per header trasparente */
+  margin-top: 40px;  /* Spazio ridotto */
   text-align: center;
 }
 
@@ -149,7 +146,7 @@ body {
 }
 
 /* ------------------------------------- */
-/* 📱 REGOLE MEDIA QUERY */
+/* 📱 REGOLE MEDIA QUERY (MOBILE) */
 /* ------------------------------------- */
 
 @media screen and (max-width: 840px) {
@@ -166,21 +163,27 @@ body {
   }
   
   .container {
-      /* ✨ MODIFICA: Rimosso padding-top */
       padding-top: 0;
       margin-top: 40px; 
   }
 
+  /* ✨✨ ECCO LA CORREZIONE ✨✨ */
   .gallery-container {
       width: 100vw;
-      height: auto;
+      height: 60vh; /* Ridotta l'altezza per lasciare spazio al testo */
       margin: 0;
   }
   
   .imgv, .imgh {
     width: 100vw;
-    height: auto;
+    height: auto; /* Le immagini singole (se presenti) si adattano */
   }
+
+  /* Assicura che la galleria (che ha la classe .imgv) usi l'altezza fissa */
+  .gallery-container.imgv {
+      height: 60vh; 
+  }
+
   .txt {
     width: 90vw;
     margin-bottom: 60px; 
