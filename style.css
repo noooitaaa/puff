@@ -16,7 +16,8 @@ body {
   font-family: "Times New Roman", Times, serif;
   font-weight: normal; 
   background-color: white; 
-  font-size: 12px;
+  font-size: 14px; /* Mantenuto a 14px */
+  line-height: 1.2; /* ✨ MODIFICA: Interlinea ridotta (più stretta) */
   color: black;
   text-align: center;
 }
@@ -40,11 +41,11 @@ body {
   width: 60vw;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 60px; /* Distanza aumentata */
+  margin-bottom: 60px; /* Distanza tra blocchi */
 }
 
 /* ------------------------------------- */
-/* 🔝 HEADER FISSO (CLASSE .footer1) - SOLUZIONE FLEXBOX */
+/* 🔝 HEADER FISSO (CLASSE .footer1) - Stile "SILOE" */
 /* ------------------------------------- */
 
 .footer1 {
@@ -60,7 +61,7 @@ body {
   padding: 8px 10px 10px 10px; 
   margin: 0; 
   
-  background-color: transparent; /* Stile "Siloe" */
+  background-color: transparent; 
   z-index: 1000; 
   color: white; 
   mix-blend-mode: difference; 
@@ -80,14 +81,19 @@ body {
 }
 
 .container {
-  padding-top: 0; /* Rimosso padding per header trasparente */
-  margin-top: 40px;  /* Spazio ridotto */
+  padding-top: 0; 
+  margin-top: 40px;  
   text-align: center;
 }
 
 /* ------------------------------------- */
 /* 🎞️ REGOLE GALLERIA SCORREVOLE */
 /* ------------------------------------- */
+
+.project-block {
+    /* Stile Desktop: necessario per annullare lo stile mobile */
+    position: relative;
+}
 
 .gallery-container {
   width: 60vw; 
@@ -107,7 +113,7 @@ body {
 .image-slide {
   flex-shrink: 0; 
   height: 100%;
-  margin-right: 10px; 
+  margin-right: 0; /* Rimosso spazio tra immagini */
 }
 
 .image-slide img,
@@ -140,9 +146,14 @@ body {
     flex-grow: 1;
 }
 
+/* Rimuove il <br> iniziale per allineare il testo QTE */
+.clients .colonna3 br:first-child {
+    display: none;
+}
+
 .clients .colonna4 {
-    text-align: right;
-    margin-top: -1.2em; 
+    text-align: left; /* Allineamento a sinistra */
+    margin-top: 0; /* Rimosso margine negativo */
 }
 
 /* ------------------------------------- */
@@ -167,26 +178,39 @@ body {
       margin-top: 40px; 
   }
 
-  /* ✨✨ ECCO LA CORREZIONE ✨✨ */
+  /* MODIFICHE MOBILE */
+  
+  .project-block {
+      position: relative; /* Contenitore per il testo assoluto */
+      width: 100vw;
+  }
+
   .gallery-container {
       width: 100vw;
-      height: 60vh; /* Ridotta l'altezza per lasciare spazio al testo */
       margin: 0;
   }
   
-  .imgv, .imgh {
-    width: 100vw;
-    height: auto; /* Le immagini singole (se presenti) si adattano */
-  }
-
-  /* Assicura che la galleria (che ha la classe .imgv) usi l'altezza fissa */
+  /* Galleria a tutto schermo (verticale) */
   .gallery-container.imgv {
-      height: 60vh; 
+      height: 100vh; /* Galleria a tutto schermo */
+      /* height: 100svh; */ /* Alternativa se 100vh non funziona bene */
   }
 
   .txt {
-    width: 90vw;
-    margin-bottom: 60px; 
+    width: 90vw; 
+    margin-left: 5vw; 
+    margin-right: 5vw;
+    
+    /* Testo sovrapposto con effetto "footer" */
+    position: absolute;
+    bottom: 20px; 
+    z-index: 10;
+    
+    color: white;
+    mix-blend-mode: difference;
+    
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .clients {
@@ -195,6 +219,7 @@ body {
       max-width: 90vw;
       margin: 10px auto;
   }
+  
   .clients .colonna4 {
       text-align: left; 
       margin-top: 0;
