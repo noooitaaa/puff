@@ -13,11 +13,11 @@ a:hover, a:visited {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, serif; 
   font-weight: normal; 
   background-color: white; 
-  font-size: 14px; /* Mantenuto a 14px */
-  line-height: 1.2; /* ✨ MODIFICA: Interlinea ridotta (più stretta) */
+  font-size: 14px; 
+  line-height: 1.2; 
   color: black;
   text-align: center;
 }
@@ -65,6 +65,7 @@ body {
   z-index: 1000; 
   color: white; 
   mix-blend-mode: difference; 
+  font-weight: normal; /* ✨ MODIFICA: Assicura che il font non sia grassetto */
 }
 
 .footer1 a {
@@ -82,7 +83,7 @@ body {
 
 .container {
   padding-top: 0; 
-  margin-top: 40px;  
+  margin-top: 70px;  /* ✨ MODIFICA: Spostato più in basso (40px + 30px) */
   text-align: center;
 }
 
@@ -91,7 +92,6 @@ body {
 /* ------------------------------------- */
 
 .project-block {
-    /* Stile Desktop: necessario per annullare lo stile mobile */
     position: relative;
 }
 
@@ -146,14 +146,13 @@ body {
     flex-grow: 1;
 }
 
-/* Rimuove il <br> iniziale per allineare il testo QTE */
 .clients .colonna3 br:first-child {
     display: none;
 }
 
 .clients .colonna4 {
-    text-align: left; /* Allineamento a sinistra */
-    margin-top: 0; /* Rimosso margine negativo */
+    text-align: left; 
+    margin-top: 0; 
 }
 
 /* ------------------------------------- */
@@ -175,13 +174,11 @@ body {
   
   .container {
       padding-top: 0;
-      margin-top: 40px; 
+      margin-top: 70px; /* ✨ MODIFICA: Applicato anche su mobile */
   }
 
-  /* MODIFICHE MOBILE */
-  
   .project-block {
-      position: relative; /* Contenitore per il testo assoluto */
+      position: relative; 
       width: 100vw;
   }
 
@@ -192,25 +189,21 @@ body {
   
   /* Galleria a tutto schermo (verticale) */
   .gallery-container.imgv {
-      height: 100vh; /* Galleria a tutto schermo */
-      /* height: 100svh; */ /* Alternativa se 100vh non funziona bene */
+      height: 100vh; /* ✨ MODIFICA: Altezza 100vh mantenuta */
   }
 
   .txt {
     width: 90vw; 
-    margin-left: 5vw; 
-    margin-right: 5vw;
+    margin-left: auto; /* Centratura */
+    margin-right: auto; /* Centratura */
     
-    /* Testo sovrapposto con effetto "footer" */
-    position: absolute;
-    bottom: 20px; 
-    z-index: 10;
+    /* ✨ MODIFICA: Rimossa sovrapposizione */
+    position: static; 
+    color: black;
+    mix-blend-mode: normal;
     
-    color: white;
-    mix-blend-mode: difference;
-    
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 8px; /* Ripristinato margine standard */
+    margin-bottom: 60px; /* Mantenuto margine inferiore */
   }
 
   .clients {
