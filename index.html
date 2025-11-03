@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="left">
+      <p>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</p>
+    </div>
+    <div class="right">
+      <a href="mailto:mail@studio.com">Mail</a>
+      <a href="https://instagram.com/studio" target="_blank">Instagram</a>
+      <span class="time">15:30:30</span>
+    </div>
+  </header>
+
+  <main class="gallery">
+    <img src="images/image1.jpg" alt="Progetto 1" />
+    <img src="images/image2.jpg" alt="Progetto 2" />
+    <img src="images/image3.jpg" alt="Progetto 3" />
+  </main>
+
+  <footer class="footer">
+    <p>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</p>
+  </footer>
+
+  <script>
+    // aggiorna orario in tempo reale
+    function updateTime() {
+      const now = new Date();
+      const t = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.querySelector('.time').textContent = t;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
