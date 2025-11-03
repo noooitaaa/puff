@@ -1,53 +1,203 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="header">
-    <div class="left">
-      <p>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</p>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      a {
+        text-decoration: none;
+        color: black;
+        cursor: crosshair;
+      }
+      a:hover, a:visited {
+        text-decoration: none;
+        color: black;
+        cursor: crosshair;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 400;
+        text-transform: none;
+        background-color: white;
+        font-size: 11px;
+        color: black;
+      }
+
+      .imgv {
+        height: 80vh;
+        text-align: center;
+      }
+
+      .imgh {
+        width: 60vw;
+        text-align: center;
+      }
+
+      .txt {
+        margin-top: -55px;
+        text-align: center;
+        mix-blend-mode: difference;
+        color: black;
+        height: 40px;
+      }
+
+      .footer1 {
+        position: fixed;
+        top: 0;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        color: white;
+        mix-blend-mode: difference;
+      }
+
+      .footer1 a {
+        color: white;
+        mix-blend-mode: difference;
+      }
+
+      .footer2 {
+        text-align: right;
+        top: 0;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        margin-left: 100px;
+        color: white;
+        mix-blend-mode: difference;
+      }
+
+      .clients {
+        bottom: 0;
+        padding-top: 200px;
+        padding-bottom: 100px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        text-align: center;
+      }
+
+      .clients a {
+        color: black;
+        mix-blend-mode: difference;
+      }
+
+      .container {
+        bottom: 0;
+        margin-top: 15vh;
+        text-align: center;
+      }
+
+      @media screen and (min-width: 200px) and (max-width: 840px) {
+        .imgv {
+          height: 100vw;
+          text-align: center;
+        }
+        .imgh {
+          width: 100vw;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <br><img src="image1.jpg" class="imgv"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgv"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgv"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgv"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgh"><br>
+      Testo segnaposto per descrizione immagine
+
+      <br><img src="image1.jpg" class="imgv"><br>
+      Testo segnaposto per descrizione immagine
     </div>
-    <div class="right">
-      <a href="mailto:mail@studio.com">Mail</a>
-      <a href="https://instagram.com/studio" target="_blank">Instagram</a>
-      <span class="time">15:30:30</span>
+
+    <div class="footer1">
+      <table>
+        <tr>
+          <td style="width:50vw;">
+            Noa Merlini, Agnese Pozzobon, Martina Valente – Studios<br>
+            Graphic designer and Creative development<br>
+            Milan Italy<br>
+          </td>
+
+          <td style="width:50vw;text-align: right;padding-right:10px;">
+            <a href="mailto:siloenouyrit@gmail.com">Mail</a><br>
+            <a href="http://instagram.com/siloenouyrit">Instagram</a>
+            <div id="div_horloge"></div>
+
+            <script type="text/javascript">
+              window.onload = function() {
+                horloge('div_horloge');
+              };
+
+              function horloge(el) {
+                if (typeof el == "string") {
+                  el = document.getElementById(el);
+                }
+                function actualiser() {
+                  var date = new Date();
+                  var str = date.getHours();
+                  str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+                  str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
+                  el.innerHTML = str;
+                }
+                actualiser();
+                setInterval(actualiser, 1000);
+              }
+            </script>
+          </td>
+        </tr>
+      </table>
     </div>
-  </header>
 
-  <main class="gallery">
-  <figure>
-    <img src="images/image1.jpg" alt="Progetto 1" />
-    <p class="caption">Testo descrittivo o titolo dell'immagine 1</p>
-  </figure>
-
-  <figure>
-    <img src="images/image2.jpg" alt="Progetto 2" />
-    <p class="caption">Altra didascalia o nota tecnica</p>
-  </figure>
-
-  <figure>
-    <img src="images/image3.jpg" alt="Progetto 3" />
-    <p class="caption">Eventuale commento o citazione</p>
-  </figure>
-</main>
-
-  <footer class="footer">
-    <p>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</p>
-  </footer>
-
-  <script>
-    // aggiorna orario in tempo reale
-    function updateTime() {
-      const now = new Date();
-      const t = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      document.querySelector('.time').textContent = t;
-    }
-    updateTime();
-    setInterval(updateTime, 1000);
-  </script>
-</body>
+    <div class="clients">
+      Merci<br><br>
+      Carina Frey & Stephanie Barth,<br>
+      Fabrice Paineau,<br>
+      Pamela Club,<br>
+      Double Magazine,<br>
+      Giorgio Armani,<br>
+      Dior,<br>
+      Hermès,<br>
+      Building Paris,<br>
+      Bureau Kayser,<br>
+      LVMH...<br>
+    </div>
+  </body>
 </html>
