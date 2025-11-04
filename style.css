@@ -126,10 +126,19 @@ body.homepage {
     cursor: pointer;
 }
 
-/* ✨ MODIFICA: Nasconde i controlli di default (incluso il play di iOS) */
+/* ✨ MODIFICA: Regole più aggressive per nascondere i controlli iOS/Safari */
 .video-toggle::-webkit-media-controls {
     display: none !important;
 }
+.video-toggle::-webkit-media-controls-play-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+.video-toggle::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
 
 .caption {
   position: absolute;
