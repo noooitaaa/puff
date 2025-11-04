@@ -121,19 +121,19 @@ body.homepage {
   display: block;
 }
 
-/* Cursore per il video cliccabile */
-.video-toggle {
-    cursor: pointer;
+/* ✨ MODIFICA: Il cursore 'pointer' (mano) appare solo su DESKTOP */
+@media (hover: hover) {
+    .video-toggle {
+        cursor: pointer;
+    }
 }
 
-/* ✨ MODIFICA: Regole CSS ancora più aggressive per nascondere tutti i controlli nativi */
-/* Questa è la parte cruciale per nascondere il tasto Play di iOS */
+/* Nasconde i controlli di default (incluso il play di iOS) */
 .video-toggle::-webkit-media-controls {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
 }
-
 .video-toggle::-webkit-media-controls-play-button,
 .video-toggle::-webkit-media-controls-panel,
 .video-toggle::-webkit-media-controls-volume-slider,
@@ -143,10 +143,11 @@ body.homepage {
 .video-toggle::-webkit-media-controls-time-remaining-display,
 .video-toggle::-webkit-media-controls-fullscreen-button {
     display: none !important;
-    -webkit-appearance: none; /* Rimuove lo stile di default di Webkit */
+    -webkit-appearance: none; 
     opacity: 0 !important;
     visibility: hidden !important;
 }
+
 
 .caption {
   position: absolute;
