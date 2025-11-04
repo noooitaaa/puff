@@ -121,7 +121,7 @@ body.homepage {
   display: block;
 }
 
-/* ✨ MODIFICA: Il cursore 'pointer' (mano) appare solo su DESKTOP */
+/* ✨ MODIFICA: Il cursore "mano" appare solo su desktop */
 @media (hover: hover) {
     .video-toggle {
         cursor: pointer;
@@ -147,7 +147,6 @@ body.homepage {
     opacity: 0 !important;
     visibility: hidden !important;
 }
-
 
 .caption {
   position: absolute;
