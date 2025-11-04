@@ -111,6 +111,7 @@ body.homepage {
   flex-shrink: 0; 
   height: 100%;
   margin-right: 0; 
+  position: relative; 
 }
 
 .image-slide img,
@@ -118,6 +119,22 @@ body.homepage {
   height: 100%; 
   width: auto; 
   display: block;
+}
+
+/* NUOVE REGOLE PER LA DIDASCALIA */
+.caption {
+  position: absolute;
+  bottom: 30px; /* ✨ MODIFICA: Aumentato a 30px */
+  left: 30px; 
+  
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 10; 
+  
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* ------------------------------------- */
@@ -128,7 +145,6 @@ body.homepage {
   padding-top: 140px; 
   padding-bottom: 70px; 
   
-  /* ✨ MODIFICA: Margini laterali impostati a 10px (come header) */
   padding-left: 10px;
   padding-right: 10px;
   
@@ -139,7 +155,7 @@ body.homepage {
   display: flex; 
   justify-content: space-between; 
   gap: 20px; 
-  max-width: none; /* Rimosso max-width: 90vw */
+  max-width: none; 
 
   color: white; 
   mix-blend-mode: difference;
@@ -170,10 +186,6 @@ body.homepage {
 
 @media screen and (max-width: 840px) {
   
-  body.homepage {
-      padding-top: 0;
-  }
-
   .footer1 {
     flex-direction: column; 
     align-items: flex-start;
@@ -188,12 +200,17 @@ body.homepage {
   .gallery-container.fullscreen {
       height: 100vh; 
   }
+  
+  /* Posizione didascalia su mobile */
+  .caption {
+      bottom: 30px; /* ✨ MODIFICA: Aumentato a 30px anche per mobile */
+      left: 10px;
+  }
 
   .clients {
       flex-direction: column; 
       gap: 30px; 
       
-      /* ✨ MODIFICA: Margini laterali 10px (come header) */
       padding-left: 10px;
       padding-right: 10px;
       max-width: none; 
