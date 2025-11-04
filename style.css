@@ -2,7 +2,6 @@
 a {
   text-decoration: none;
   color: black;
-  cursor: crosshair;
 }
 
 a:hover, a:visited {
@@ -17,35 +16,29 @@ body {
   font-weight: normal; 
   background-color: white; 
   font-size: 14px; 
-  line-height: 1.2; 
+  line-height: 16px; 
   color: black;
   text-align: center;
 }
 
-/* 🖼️ CLASSI IMMAGINI E TESTO ORIGINALI */
-.imgv {
-  height: 80vh;
-  display: block;
-  margin: 0 auto;
+/* Homepage: Rimosso padding-top, l'header è trasparente */
+body.homepage {
+    overflow: hidden;
+    padding-top: 0; 
 }
 
-.imgh {
-  width: 60vw;
-  display: block;
-  margin: 0 auto;
+/* Colore di selezione giallo */
+::selection {
+    background: #FFFF00; 
+    color: black;
 }
-
-.txt {
-  margin-top: 8px;
-  text-align: left;
-  width: 60vw;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 60px; /* Distanza tra blocchi */
+::-moz-selection { 
+    background: #FFFF00;
+    color: black;
 }
 
 /* ------------------------------------- */
-/* 🔝 HEADER FISSO (CLASSE .footer1) - Stile "SILOE" */
+/* 🔝 HEADER FISSO (CLASSE .footer1) */
 /* ------------------------------------- */
 
 .footer1 {
@@ -56,21 +49,31 @@ body {
   
   display: flex;
   justify-content: space-between; 
-  align-items: center; 
+  align-items: flex-start; 
   
   padding: 8px 10px 10px 10px; 
   margin: 0; 
   
+  /* ✨ MODIFICHE: Trasparente, testo nero, nessun effetto */
   background-color: transparent; 
   z-index: 1000; 
-  color: white; 
-  mix-blend-mode: difference; 
-  font-weight: normal; /* ✨ MODIFICA: Assicura che il font non sia grassetto */
+  color: black; 
+  /* mix-blend-mode rimosso */
+  
+  font-weight: normal;
+  font-size: inherit;
+  font-family: inherit;
 }
 
+/* Link nell'header (neri) */
 .footer1 a {
-    color: white;
-    mix-blend-mode: difference;
+    color: black;
+    text-decoration: none;
+}
+
+.header-link {
+    color: inherit; 
+    text-decoration: none;
 }
 
 .header-left {
@@ -81,27 +84,25 @@ body {
     text-align: right;
 }
 
-.container {
-  padding-top: 0; 
-  margin-top: 70px;  /* ✨ MODIFICA: Spostato più in basso (40px + 30px) */
-  text-align: center;
+.header-location {
+    margin-top: 0; 
 }
 
 /* ------------------------------------- */
 /* 🎞️ REGOLE GALLERIA SCORREVOLE */
 /* ------------------------------------- */
 
-.project-block {
-    position: relative;
-}
-
 .gallery-container {
-  width: 60vw; 
-  height: 80vh; 
   overflow-x: auto; 
   overflow-y: hidden;
-  margin: 0 auto; 
   display: block; 
+}
+
+/* Galleria (index.html) torna a schermo intero */
+.gallery-container.fullscreen {
+  width: 100vw; 
+  height: 100vh; 
+  margin: 0;
 }
 
 .image-wrapper {
@@ -113,7 +114,7 @@ body {
 .image-slide {
   flex-shrink: 0; 
   height: 100%;
-  margin-right: 0; /* Rimosso spazio tra immagini */
+  margin-right: 0; 
 }
 
 .image-slide img,
@@ -124,21 +125,30 @@ body {
 }
 
 /* ------------------------------------- */
-/* 👥 REGOLE SEZIONE CLIENTS (4 COLONNE) */
+/* 👥 REGOLE SEZIONE INFO (Pagina about.html) */
 /* ------------------------------------- */
 
 .clients {
-  padding-top: 200px;
-  padding-bottom: 100px;
-  margin: 10px;
-  text-align: left; 
+  padding-top: 140px; 
+  padding-bottom: 70px; 
   
+  margin-left: auto; 
+  margin-right: auto; 
+  
+  text-align: left; 
   display: flex; 
   justify-content: space-between; 
   gap: 20px; 
   max-width: 90vw; 
-  margin-left: auto; 
-  margin-right: auto; 
+
+  /* ✨ MODIFICHE: Testo nero, nessun effetto */
+  color: black; 
+  /* mix-blend-mode rimosso */
+}
+
+/* Link nella pagina About (neri) */
+.clients a {
+    color: black;
 }
 
 .clients > div {
@@ -161,6 +171,10 @@ body {
 
 @media screen and (max-width: 840px) {
   
+  body.homepage {
+      padding-top: 0; /* Rimosso padding */
+  }
+
   .footer1 {
     flex-direction: column; 
     align-items: flex-start;
@@ -169,48 +183,20 @@ body {
 
   .header-right {
     text-align: left;
-    margin-top: 5px;
+    margin-top: 10px; 
   }
   
-  .container {
-      padding-top: 0;
-      margin-top: 70px; /* ✨ MODIFICA: Applicato anche su mobile */
-  }
-
-  .project-block {
-      position: relative; 
-      width: 100vw;
-  }
-
-  .gallery-container {
-      width: 100vw;
-      margin: 0;
-  }
-  
-  /* Galleria a tutto schermo (verticale) */
-  .gallery-container.imgv {
-      height: 100vh; /* ✨ MODIFICA: Altezza 100vh mantenuta */
-  }
-
-  .txt {
-    width: 90vw; 
-    margin-left: auto; /* Centratura */
-    margin-right: auto; /* Centratura */
-    
-    /* ✨ MODIFICA: Rimossa sovrapposizione */
-    position: static; 
-    color: black;
-    mix-blend-mode: normal;
-    
-    margin-top: 8px; /* Ripristinato margine standard */
-    margin-bottom: 60px; /* Mantenuto margine inferiore */
+  .gallery-container.fullscreen {
+      height: 100vh; 
   }
 
   .clients {
       flex-direction: column; 
       gap: 30px; 
       max-width: 90vw;
-      margin: 10px auto;
+      padding-top: 170px; 
+      margin-left: auto;
+      margin-right: auto;
   }
   
   .clients .colonna4 {
