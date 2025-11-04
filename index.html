@@ -90,20 +90,29 @@
     <script>
         const videos = document.querySelectorAll('.video-toggle');
         
+        // Rileva se l'utente è su un dispositivo "touch" (mobile/tablet)
+        const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
         videos.forEach(video => {
             // Tenta di far partire il video subito
             video.play().catch(error => {
                 console.log("Autoplay bloccato da browser:", error);
             });
 
-            video.addEventListener('click', function() {
-                if (video.paused) {
-                    video.play();
-                    video.muted = true; 
-                } else {
-                    video.muted = !video.muted;
-                }
-            });
+            // Aggiungi la funzione 'click-to-unmute' SOLO se NON è mobile
+            if (!isMobile) {
+                video.addEventListener('click', function() {
+                    if (video.paused) {
+                        video.play();
+                        video.muted = true; 
+                    } else {
+                        // Inverte l'audio solo su desktop
+                        video.muted = !video.muted;
+                    }
+                });
+            }
+            // Se è mobile, lo script non aggiunge nessun listener
+            // Il video rimane muto e non cliccabile (per l'audio)
         });
     </script>
     
