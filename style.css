@@ -21,13 +21,11 @@ body {
   text-align: center;
 }
 
-/* Homepage: Rimosso padding-top, l'header è trasparente */
 body.homepage {
     overflow: hidden;
     padding-top: 0; 
 }
 
-/* Colore di selezione giallo */
 ::selection {
     background: #FFFF00; 
     color: black;
@@ -54,7 +52,6 @@ body.homepage {
   padding: 8px 10px 10px 10px; 
   margin: 0; 
   
-  /* ✨ MODIFICHE: Ripristinato sfondo trasparente ed effetto */
   background-color: transparent; 
   z-index: 1000; 
   color: white; 
@@ -65,7 +62,6 @@ body.homepage {
   font-family: inherit;
 }
 
-/* Link nell'header (tornano bianchi con effetto) */
 .footer1 a {
     color: white;
     mix-blend-mode: difference;
@@ -99,10 +95,9 @@ body.homepage {
   display: block; 
 }
 
-/* Galleria (index.html) torna a schermo intero */
 .gallery-container.fullscreen {
   width: 100vw; 
-  height: 100vh; /* ✨ MODIFICA: Altezza ripristinata a 100vh */
+  height: 100vh; 
   margin: 0;
 }
 
@@ -133,21 +128,23 @@ body.homepage {
   padding-top: 140px; 
   padding-bottom: 70px; 
   
-  margin-left: auto; 
-  margin-right: auto; 
+  /* ✨ MODIFICA: Margini laterali impostati a 10px (come header) */
+  padding-left: 10px;
+  padding-right: 10px;
+  
+  margin-left: 0; 
+  margin-right: 0; 
   
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
   gap: 20px; 
-  max-width: 90vw; 
+  max-width: none; /* Rimosso max-width: 90vw */
 
-  /* ✨ MODIFICHE: Ripristinato effetto per coerenza visiva */
   color: white; 
   mix-blend-mode: difference;
 }
 
-/* Link nella pagina About (tornano bianchi con effetto) */
 .clients a {
     color: white;
     mix-blend-mode: difference;
@@ -174,7 +171,7 @@ body.homepage {
 @media screen and (max-width: 840px) {
   
   body.homepage {
-      padding-top: 0; /* Rimosso padding */
+      padding-top: 0;
   }
 
   .footer1 {
@@ -189,16 +186,21 @@ body.homepage {
   }
   
   .gallery-container.fullscreen {
-      height: 100vh; /* Mantiene 100vh */
+      height: 100vh; 
   }
 
   .clients {
       flex-direction: column; 
       gap: 30px; 
-      max-width: 90vw;
+      
+      /* ✨ MODIFICA: Margini laterali 10px (come header) */
+      padding-left: 10px;
+      padding-right: 10px;
+      max-width: none; 
+      
       padding-top: 170px; 
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 0;
+      margin-right: 0;
   }
   
   .clients .colonna4 {
