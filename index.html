@@ -70,26 +70,24 @@
         const videos = document.querySelectorAll('.video-toggle');
         
         videos.forEach(video => {
-            video.addEventListener('click', function() {
-                
-                // Tenta di avviare il video, nel caso l'autoplay fosse bloccato
-                var playPromise = video.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        // L'autoplay o il play() manuale è partito.
-                        // Ora invertiamo l'audio.
-                        video.muted = !video.muted;
-                    })
-                    .catch(error => {
-                        // L'autoplay è bloccato dal browser.
-                        // Non facciamo nulla, ma il click ha provato ad avviarlo.
-                    });
-                } else {
-                     // Fallback per browser che non supportano le "Promise" sul play
-                     video.muted = !video.muted;
-                }
+            // Tenta di far partire il video subito, anche se l'autoplay fallisce
+            // Questo è utile per la prima volta che l'utente interagisce con la pagina
+            video.play().catch(error => {
+                // Se l'autoplay fallisce, il video rimane in pausa.
+                // Lo gestiremo con il click.
+                console.log("Autoplay bloccato da browser:", error);
+            });
 
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    // Se il video è in pausa (es.autoplay bloccato o primo click), lo facciamo partire
+                    video.play();
+                    // Importante: lo teniamo muto al primo play, come desiderato.
+                    video.muted = true; 
+                } else {
+                    // Se il video sta già girando, i click successivi attivano/disattivano l'audio
+                    video.muted = !video.muted;
+                }
             });
         });
     </script>
