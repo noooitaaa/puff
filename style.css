@@ -15,8 +15,8 @@ body {
   font-family: "Times New Roman", Times, serif; 
   font-weight: normal; 
   background-color: white; 
-  font-size: 14px; 
-  line-height: 16px; 
+  font-size: 13px; 
+  line-height: 15px; 
   color: black;
   text-align: center;
 }
@@ -54,20 +54,21 @@ body.homepage {
   padding: 8px 10px 10px 10px; 
   margin: 0; 
   
-  /* ✨ MODIFICHE: Trasparente, testo nero, nessun effetto */
+  /* ✨ MODIFICHE: Ripristinato sfondo trasparente ed effetto */
   background-color: transparent; 
   z-index: 1000; 
-  color: black; 
-  /* mix-blend-mode rimosso */
+  color: white; 
+  mix-blend-mode: difference; 
   
   font-weight: normal;
   font-size: inherit;
   font-family: inherit;
 }
 
-/* Link nell'header (neri) */
+/* Link nell'header (tornano bianchi con effetto) */
 .footer1 a {
-    color: black;
+    color: white;
+    mix-blend-mode: difference;
     text-decoration: none;
 }
 
@@ -101,7 +102,7 @@ body.homepage {
 /* Galleria (index.html) torna a schermo intero */
 .gallery-container.fullscreen {
   width: 100vw; 
-  height: 100vh; 
+  height: 100vh; /* ✨ MODIFICA: Altezza ripristinata a 100vh */
   margin: 0;
 }
 
@@ -141,14 +142,15 @@ body.homepage {
   gap: 20px; 
   max-width: 90vw; 
 
-  /* ✨ MODIFICHE: Testo nero, nessun effetto */
-  color: black; 
-  /* mix-blend-mode rimosso */
+  /* ✨ MODIFICHE: Ripristinato effetto per coerenza visiva */
+  color: white; 
+  mix-blend-mode: difference;
 }
 
-/* Link nella pagina About (neri) */
+/* Link nella pagina About (tornano bianchi con effetto) */
 .clients a {
-    color: black;
+    color: white;
+    mix-blend-mode: difference;
 }
 
 .clients > div {
@@ -187,7 +189,7 @@ body.homepage {
   }
   
   .gallery-container.fullscreen {
-      height: 100vh; 
+      height: 100vh; /* Mantiene 100vh */
   }
 
   .clients {
