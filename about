@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Info – Noa Merlini, Agnese Pozzobon, Martina Valente</title>
+
+    <link rel="stylesheet" href="style.css"> 
+  </head>
+
+  <body>
+
+    <div class="footer1">
+        <div class="header-left">
+            <a href="index.html" class="header-link">
+                Noa Merlini, Agnese Pozzobon, Martina Valente<br>
+                Graphic design and Creative development Studios
+            </a>
+        </div>
+        <div class="header-right">
+            <div id="div_horloge"></div>
+            <div class="header-location">Milan, Italy</div> 
+
+            <script>
+              // Script orologio (invariato)
+              window.onload = function() { horloge('div_horloge'); };
+              function horloge(el) {
+                if (typeof el == "string") { el = document.getElementById(el); }
+                function actualiser() {
+                  var date = new Date();
+                  var str = date.getHours();
+                  str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+                  str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
+                  el.innerHTML = str;
+                }
+                actualiser();
+                setInterval(actualiser, 1000);
+              }
+            </script>
+        </div>
+    </div>
+    
+    <div class="clients">
+        <div class="colonna1">
+            Clients<br><br>
+            Alterazioni Video, Artists' collective <br> Riccardo Benassi, Visual Artist <br> Dual Room, Art direction and Graphic design studio <br> Eyes on Talents, High Fashion Scouting Agency <br> Carina Frey Stephanie Barth, Creative direction and Art direction Studio <br> Kv Roes, Fashion brand <br> Matterof, Graphic Design Studio <br> TIPS, University of Padova
+        </div>
+        
+        <div class="colonna2">
+            Extra <br><br>Summer After School, residency, Jim Fontana Studio <br> Soft Crash, residency, Museo Macro Roma
+            <br><br><br>Formation<br><br>MA, Communication and Design for Publishing, ISIA Urbino<br>BA, Iuav Venezia, Arti visive<br>BA, Iuav Venezia, Design<br>BA, Graphic and Multimedia Communication, IUSVE Venice, 2018/2021
+        </div>
+
+        <div class="colonna3">
+            <br>Qte is a studio dedicated to the development of creative projects, guiding every phase of a project: from concept development and creative research, to design and production, with a critical awareness of tools and methodologies of communication and distribution.<br>
+            <br><br>Qte focuses on visual and graphic design, with a particular emphasis on printed matter for publishing and communication; data design and the construction of visual identities and video editing; creative direction and art direction. <br>
+           <br> <br>Qte works across design, fashion, and art and embraces a porous vision, looking for spaces of contamination and collaboration.
+           <br> <br>Qte is interested in how content can shape design —and how design, in turn, can shape content.
+        </div>
+        
+        <div class="colonna4">
+            <a href="mailto:noamerlini@gmail.com">qte.studios@gmail.com <br> via Bernardino Verro 41, Milan <br> +39 3498324652</a>
+        </div>
+    </div>
+    
+  </body>
+</html>
