@@ -121,11 +121,15 @@ body.homepage {
   display: block;
 }
 
-/* NUOVE REGOLE PER LA DIDASCALIA */
+/* ✨ MODIFICA: Aggiunto cursore per il video cliccabile */
+.video-toggle {
+    cursor: pointer;
+}
+
 .caption {
   position: absolute;
-  bottom: 30px; /* ✨ MODIFICA: Aumentato a 30px */
-  left: 30px; 
+  bottom: 30px; 
+  left: 10px; 
   
   color: white;
   mix-blend-mode: difference;
@@ -186,6 +190,10 @@ body.homepage {
 
 @media screen and (max-width: 840px) {
   
+  body.homepage {
+      padding-top: 0;
+  }
+
   .footer1 {
     flex-direction: column; 
     align-items: flex-start;
@@ -201,9 +209,8 @@ body.homepage {
       height: 100vh; 
   }
   
-  /* Posizione didascalia su mobile */
   .caption {
-      bottom: 30px; /* ✨ MODIFICA: Aumentato a 30px anche per mobile */
+      bottom: 30px; 
       left: 10px;
   }
 
