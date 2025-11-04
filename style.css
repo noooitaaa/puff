@@ -121,9 +121,14 @@ body.homepage {
   display: block;
 }
 
-/* ✨ MODIFICA: Aggiunto cursore per il video cliccabile */
+/* Cursore per il video cliccabile */
 .video-toggle {
     cursor: pointer;
+}
+
+/* ✨ MODIFICA: Nasconde i controlli di default (incluso il play di iOS) */
+.video-toggle::-webkit-media-controls {
+    display: none !important;
 }
 
 .caption {
