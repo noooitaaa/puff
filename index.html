@@ -2,7 +2,7 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
     <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
 
     <link rel="stylesheet" href="style.css"> 
@@ -92,17 +92,37 @@
     
     
     <script>
+        const gallery = document.querySelector('.gallery-container');
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
+        // Funzione per sbloccare i video (da usare alla PRIMA interazione)
+        function unlockVideos() {
+            videos.forEach(video => {
+                if (video.paused) {
+                    video.play();
+                }
+            });
+            // Rimuove i listener per eseguirlo solo una volta
+            window.removeEventListener('touchstart', unlockVideos, { capture: true });
+            window.removeEventListener('scroll', unlockVideos, { capture: true });
+        }
+
+        // 1. Tenta l'autoplay standard
         videos.forEach(video => {
             video.play().catch(error => {
-                console.log("Autoplay bloccato da browser:", error);
+                // Autoplay fallito (probabilmente Low Power Mode)
+                // Aggiungiamo i listener per sbloccarlo al primo tocco/scroll
+                if (isMobile) {
+                    window.addEventListener('touchstart', unlockVideos, { once: true, capture: true });
+                    window.addEventListener('scroll', unlockVideos, { once: true, capture: true });
+                }
             });
 
+            // 3. Aggiunge il click-per-audio SOLO su DESKTOP
             if (!isMobile) {
                 video.addEventListener('click', function() {
-                    if (video.paused) {
+                    if (video.paused) { 
                         video.play();
                         video.muted = true; 
                     } else {
