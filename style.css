@@ -1,117 +1,281 @@
-<!DOCTYPE html>
-<html lang="it">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
+/* ⚙️ REGOLE FONDAMENTALI ORIGINALI */
+a {
+  text-decoration: none;
+  color: black;
+}
 
-    <link rel="stylesheet" href="style.css"> 
-  </head>
+a:hover, a:visited {
+  text-decoration: none;
+  color: black;
+}
 
-  <body class="homepage">
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif; 
+  font-weight: normal; 
+  background-color: white; 
+  font-size: 13px; 
+  line-height: 15px; 
+  color: black;
+  text-align: center;
+}
 
-    <div class="footer1">
-        <div class="header-left">
-            <a href="about.html" class="header-link">
-                Noa Merlini, Agnese Pozzobon, Martina Valente<br>
-                Graphic design and Creative development Studios
-            </a>
-        </div>
-        <div class="header-right">
-            <div id="div_horloge"></div>
-            <div class="header-location">Milan, Italy</div>
+body.homepage {
+    overflow: hidden;
+    padding-top: 0; 
+}
 
-            <script>
-              // Script orologio (invariato)
-              window.onload = function() { horloge('div_horloge'); };
-              function horloge(el) {
-                if (typeof el == "string") { el = document.getElementById(el); }
-                function actualiser() {
-                  var date = new Date();
-                  var str = date.getHours();
-                  str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-                  str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
-                  el.innerHTML = str;
-                }
-                actualiser();
-                setInterval(actualiser, 1000);
-              }
-            </script>
-        </div>
-    </div>
-    
-    <div class="gallery-container fullscreen">
-        <div class="image-wrapper">
-        
-            <div class="image-slide"><img src="images/camouflage1.jpg" alt="camouflage1"></div>
-            <div class="image-slide"><img src="images/camouflage.jpg" alt="camouflage"></div>
-            <div class="image-slide"><img src="images/whatstheopposite-98-99.jpg" alt="whatstheopposite-98-99"></div>
-            <div class="image-slide"><img src="images/AGF.jpg" alt="AGF"></div>
-            <div class="image-slide"><img src="images/gewolbe9.jpg" alt="gewolbe9"></div>
-            <div class="image-slide"><img src="images/radio-spugna1.jpg" alt="radio-spugna1"></div>
-            <div class="image-slide"><img src="images/IMG_0733.jpg" alt="IMG_0733"></div>
-            <div class="image-slide"><img src="images/AGF3.jpg" alt="AGF3"></div>
-            <div class="image-slide"><img src="images/whatstheopposite.jpg" alt="whatstheopposite"></div>
-            
-            <div class="image-slide">
-                <video class="video-toggle" autoplay loop muted playsinline>
-                    <source src="images/mb.mp4" type="video/mp4">
-                    Il tuo browser non supporta i video.
-                </video>
-                <div class="video-overlay"></div>
-            </div>
-            
-            <div class="image-slide">
-                <video class="video-toggle" autoplay loop muted playsinline>
-                    <source src="images/hyperinertia.mp4" type="video/mp4">
-                    Il tuo browser non supporta i video.
-                </video>
-                <div class="video-overlay"></div>
-            </div>
+::selection {
+    background: #FFFF00; 
+    color: black;
+}
+::-moz-selection { 
+    background: #FFFF00;
+    color: black;
+}
 
-            <div class="image-slide">
-                <video class="video-toggle" autoplay loop muted playsinline>
-                    <source src="images/flamenco.mp4" type="video/mp4">
-                    Il tuo browser non supporta i video.
-                </video>
-                <div class="video-overlay"></div>
-            </div>
+/* ------------------------------------- */
+/* 🔝 HEADER FISSO (CLASSE .footer1) */
+/* ------------------------------------- */
 
-            <div class="image-slide">
-                <video class="video-toggle" autoplay loop muted playsinline>
-                    <source src="images/kvroes.mp4" type="video/mp4">
-                    Il tuo browser non supporta i video.
-                </video>
-                <div class="video-overlay"></div>
-            </div>
+.footer1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; 
+  
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start; 
+  
+  padding: 8px 10px 10px 10px; 
+  margin: 0; 
+  
+  background-color: transparent; 
+  z-index: 1000; 
+  color: white; 
+  mix-blend-mode: difference; 
+  
+  font-weight: normal;
+  font-size: inherit;
+  font-family: inherit;
+}
 
-            <div class="image-slide"><img src="images/radio-spugna.gif" alt="radio-spugna"></div>
+.footer1 a {
+    color: white;
+    mix-blend-mode: difference;
+    text-decoration: none;
+}
 
-        </div>
-    </div>
-    
-    
-    <script>
-        const videos = document.querySelectorAll('.video-toggle');
-        const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+.header-link {
+    color: inherit; 
+    text-decoration: none;
+}
 
-        videos.forEach(video => {
-            video.play().catch(error => {
-                console.log("Autoplay bloccato da browser:", error);
-            });
+.header-left {
+    text-align: left;
+}
 
-            if (!isMobile) {
-                video.addEventListener('click', function() {
-                    if (video.paused) {
-                        video.play();
-                        video.muted = true; 
-                    } else {
-                        video.muted = !video.muted;
-                    }
-                });
-            }
-        });
-    </script>
-    
-  </body>
-</html>
+.header-right {
+    text-align: right;
+}
+
+.header-location {
+    margin-top: 0; 
+}
+
+/* ------------------------------------- */
+/* 🎞️ REGOLE GALLERIA SCORREVOLE */
+/* ------------------------------------- */
+
+.gallery-container {
+  overflow-x: auto; 
+  overflow-y: hidden;
+  display: block; 
+}
+
+.gallery-container.fullscreen {
+  width: 100vw; 
+  height: 100vh; 
+  margin: 0;
+}
+
+.image-wrapper {
+  display: flex; 
+  height: 100%;
+  white-space: nowrap; 
+}
+
+.image-slide {
+  flex-shrink: 0; 
+  height: 100%;
+  margin-right: 0; 
+  position: relative; 
+}
+
+.image-slide img,
+.image-slide video {
+  height: 100%; 
+  width: auto; 
+  display: block;
+}
+
+/* Il cursore "mano" appare solo su desktop */
+@media (hover: hover) {
+    .video-toggle {
+        cursor: pointer;
+    }
+}
+
+/* Nasconde i controlli di default (incluso il play di iOS) */
+.video-toggle::-webkit-media-controls {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+.video-toggle::-webkit-media-controls-play-button,
+.video-toggle::-webkit-media-controls-panel,
+.video-toggle::-webkit-media-controls-volume-slider,
+.video-toggle::-webkit-media-controls-mute-button,
+.video-toggle::-webkit-media-controls-timeline,
+.video-toggle::-webkit-media-controls-current-time-display,
+.video-toggle::-webkit-media-controls-time-remaining-display,
+.video-toggle::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+    -webkit-appearance: none; 
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Overlay trasparente (invisibile su desktop) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Sta sopra il video */
+    display: none; /* Nascosto di default */
+}
+
+
+.caption {
+  position: absolute;
+  bottom: 30px; 
+  left: 10px; 
+  
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 10; 
+  
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ------------------------------------- */
+/* 👥 REGOLE SEZIONE INFO (Pagina about.html) */
+/* ------------------------------------- */
+
+.clients {
+  padding-top: 140px; 
+  padding-bottom: 70px; 
+  
+  padding-left: 10px;
+  padding-right: 10px;
+  
+  margin-left: 0; 
+  margin-right: 0; 
+  
+  text-align: left; 
+  display: flex; 
+  justify-content: space-between; 
+  gap: 20px; 
+  max-width: none; 
+
+  color: white; 
+  mix-blend-mode: difference;
+}
+
+.clients a {
+    color: white;
+    mix-blend-mode: difference;
+}
+
+.clients > div {
+    flex-basis: 25%; 
+    flex-grow: 1;
+}
+
+.clients .colonna3 br:first-child {
+    display: none;
+}
+
+.clients .colonna4 {
+    text-align: left; 
+    margin-top: 0; 
+}
+
+/* ------------------------------------- */
+/* 📱 REGOLE MEDIA QUERY (MOBILE) */
+/* ------------------------------------- */
+
+@media screen and (max-width: 840px) {
+  
+  body.homepage {
+      padding-top: 0;
+  }
+
+  .footer1 {
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 8px 10px;
+  }
+
+  .header-right {
+    text-align: left;
+    margin-top: 10px; 
+  }
+  
+  .gallery-container.fullscreen {
+      height: 100vh; 
+  }
+  
+  .caption {
+      bottom: 30px; 
+      left: 10px;
+  }
+  
+  /* ✨ MODIFICA: Il video ignora i tocchi */
+  .video-toggle {
+      pointer-events: none;
+      z-index: 1; /* Sta sotto l'overlay */
+  }
+  
+  /* ✨ MODIFICA: L'overlay è attivo e cattura i tocchi */
+  .video-overlay {
+      display: block; 
+      z-index: 2; /* Sta sopra il video */
+      /* Non ha pointer-events: none, quindi blocca i tocchi al video */
+  }
+
+  .clients {
+      flex-direction: column; 
+      gap: 30px; 
+      
+      padding-left: 10px;
+      padding-right: 10px;
+      max-width: none; 
+      
+      padding-top: 170px; 
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .clients .colonna4 {
+      text-align: left; 
+      margin-top: 0;
+  }
+}
