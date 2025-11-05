@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Info – Noa Merlini, Agnese Pozzobon, Martina Valente</title>
-
-    <link rel="stylesheet" href="style.css"> 
-  </head>
-
-  <body>
-
-    <div class="footer1">
-        <div class="header-left">
-            <a href="index.html" class="header-link">
-                Noa Merlini, Agnese Pozzobon, Martina Valente<br>
-                Graphic design and Creative development
-            </a>
-        </div>
-        <div class="header-right">
-            <div id="div_horloge"></div>
-            <div class="header-location">Milan, Italy</div> 
-
-            <script>
-              // Script orologio (invariato)
-              window.onload = function() { horloge('div_horloge'); };
-              function horloge(el) {
-                if (typeof el == "string") { el = document.getElementById(el); }
-                function actualiser() {
-                  var date = new Date();
-                  var str = date.getHours();
-                  str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-                  str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
-                  el.innerHTML = str;
-                }
-                actualiser();
-                setInterval(actualiser, 1000);
-              }
-            </script>
-        </div>
-    </div>
-    
-    <div class="clients">
+<div class="clients">
         
         <div class="colonna1">
             Thanks<br><br>
@@ -64,29 +22,30 @@
             BA Visual Arts, Iuav, University of Venice (IT)<br>
             BA Graphic and Multimedia Communication, IUSVE Venice (IT)<br>
             BA Product and Visual Design, University of Venice (IT)
-            <br><br>
-            Summer After School Residency, Studio Jim Fontana, 2025 (Ouessant island, FR)<br>
+            <br><br><br>
+            Extra<br><br>
+            Summer After School Residency, Studio Jim Fontana, 2025 (Ouessant island FR)<br>
             Lab for New Immagination II Residency, MACRO – Museo di Arte Contemporanea di Roma, 2022 (Rome, IT)
             <br><br><br>
             Independent project<br><br>
-            radio spugna, co-founders<br>
+            radio spugna, co-founders and members, independent radio station, 2021– ongoing<br>
             www.radiospugna.com
         </div>
         
         <div class="colonna3">
             Noa, Agnese, and Martina jointly run a studio dedicated to the development of creative projects — from concept development and creative research to design and production — guided by a critical awareness of the tools and methodologies of communication and distribution.
-            <br><br><br>
+            <br><br>
             Their practice focuses on visual and graphic design for publishing and communication, with a primary emphasis on printed matter, alongside work in data visualization and web design, visual identities, and art direction.
             <br><br>
             They work across design, fashion, and art, embracing a porous vision that seeks spaces of contamination — exploring how content can shape design, and how design, in turn, can shape content.
+            
+            <br><br><br>
+            Contact them <a href="mailto:noamerlini@hotmail.it,agnesee.pozzobon@gmail.com,martinavalentemv11@gmail.com"><u>here</u></a>
+            <br> via Bernardino Verro 41, Milan <br><br>
+            
+            <a href="https://www.instagram.com/nooitaaa" target="_blank">@nooitaaa</a> <br> 
+            <a href="https://www.instagram.com/seagnie" target="_blank">@seagnie</a> <br> 
+            <a href="https://www.instagram.com/martinaz_zz" target="_blank">@martinaz_zz</a>
         </div>
         
-        <div class="colonna4">
-            Contact them <a href="mailto:noamerlini@hotmail.it,agnesee.pozzobon@gmail.com,martinavalentemv11@gmail.com"><u>here</u></a>
-            <br> <br><br>
-            
         </div>
-    </div>
-    
-  </body>
-</html>
