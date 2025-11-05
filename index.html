@@ -92,33 +92,36 @@
     
     
     <script>
-        const gallery = document.querySelector('.gallery-container');
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-        // Funzione per provare a far partire i video
-        function playAllVideos() {
+        // Funzione per sbloccare i video (da usare alla PRIMA interazione)
+        function unlockVideos() {
             videos.forEach(video => {
                 if (video.paused) {
-                    video.play().catch(error => {
-                        // Questo è normale, l'autoplay è stato bloccato
-                    });
+                    video.play();
                 }
             });
+            // Rimuove i listener per eseguirlo solo una volta
+            window.removeEventListener('touchstart', unlockVideos, { capture: true });
+            window.removeEventListener('scroll', unlockVideos, { capture: true });
         }
 
-        // 1. Prova a farli partire al caricamento
-        playAllVideos();
-
-        // 2. Aggiungi un listener per il PRIMO SCROLL
-        // Questa è l'interazione utente che sblocca l'autoplay in modalità risparmio energetico
-        gallery.addEventListener('scroll', playAllVideos, { once: true });
-        
-        // 3. Aggiungi il click-per-audio SOLO su desktop
+        // Tenta l'autoplay standard
         videos.forEach(video => {
+            video.play().catch(error => {
+                // Autoplay fallito (probabilmente Low Power Mode)
+                // Aggiungiamo i listener per sbloccarlo al primo tocco/scroll
+                if (isMobile) {
+                    window.addEventListener('touchstart', unlockVideos, { once: true, capture: true });
+                    window.addEventListener('scroll', unlockVideos, { once: true, capture: true });
+                }
+            });
+
+            // Aggiunge il click-per-audio SOLO su DESKTOP
             if (!isMobile) {
                 video.addEventListener('click', function() {
-                    if (video.paused) { // Sicurezza se il play fallisce
+                    if (video.paused) {
                         video.play();
                         video.muted = true; 
                     } else {
