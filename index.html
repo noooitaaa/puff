@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Noa Merlini, Agnese Pozzobon, Martina Valente – Studios</title>
+    <title>Agnese Pozzobon, Noa Merlini, Martina Valente – Studio</title>
 
     <link rel="stylesheet" href="style.css"> 
   </head>
@@ -13,7 +13,7 @@
     <div class="footer1">
         <div class="header-left">
             <a href="about.html" class="header-link">
-                Noa Merlini, Agnese Pozzobon, Martina Valente<br>
+                Agnese Pozzobon, Noa Merlini, Martina Valente<br>
                 Graphic design and Creative development
             </a>
         </div>
@@ -22,7 +22,7 @@
             <div class="header-location">Milan, Italy</div>
 
             <script>
-              // Script orologio
+              // Script orologio (invariato)
               window.onload = function() { horloge('div_horloge'); };
               function horloge(el) {
                 if (typeof el == "string") { el = document.getElementById(el); }
@@ -96,30 +96,24 @@
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-        // Funzione per sbloccare i video (da usare alla PRIMA interazione)
         function unlockVideos() {
             videos.forEach(video => {
                 if (video.paused) {
                     video.play();
                 }
             });
-            // Rimuove i listener per eseguirlo solo una volta
             window.removeEventListener('touchstart', unlockVideos, { capture: true });
             window.removeEventListener('scroll', unlockVideos, { capture: true });
         }
 
-        // 1. Tenta l'autoplay standard
         videos.forEach(video => {
             video.play().catch(error => {
-                // Autoplay fallito (probabilmente Low Power Mode)
-                // Aggiungiamo i listener per sbloccarlo al primo tocco/scroll
                 if (isMobile) {
                     window.addEventListener('touchstart', unlockVideos, { once: true, capture: true });
                     window.addEventListener('scroll', unlockVideos, { once: true, capture: true });
                 }
             });
 
-            // 3. Aggiunge il click-per-audio SOLO su DESKTOP
             if (!isMobile) {
                 video.addEventListener('click', function() {
                     if (video.paused) { 
