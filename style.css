@@ -248,13 +248,17 @@ body.homepage {
       left: 10px;
   }
   
-  /* ✨ MODIFICA: Rende il video non interattivo E attiva l'overlay */
+  /* ✨ MODIFICA: Il video IGNORA i tocchi */
   .video-toggle {
       pointer-events: none;
   }
   
+  /* ✨ MODIFICA: L'overlay è ATTIVO ma IGNORA i tocchi */
+  /* Questo permette al tocco di "passare attraverso" e raggiungere
+     il .gallery-container, che è l'elemento che scorre. */
   .video-overlay {
       display: block; 
+      pointer-events: none; 
   }
 
   .clients {
