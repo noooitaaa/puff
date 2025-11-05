@@ -19,6 +19,10 @@ body {
   line-height: 15px; 
   color: black;
   text-align: center;
+  
+  /* ✨ MODIFICA: Richiede un rendering del font più sottile su Mac/iOS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body.homepage {
@@ -155,8 +159,8 @@ body.homepage {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2; /* Sta sopra il video */
-    display: none; /* Nascosto di default */
+    z-index: 2; 
+    display: none; 
 }
 
 
@@ -248,17 +252,16 @@ body.homepage {
       left: 10px;
   }
   
-  /* ✨ MODIFICA: Il video ignora i tocchi */
+  /* Il video ignora i tocchi */
   .video-toggle {
       pointer-events: none;
-      z-index: 1; /* Sta sotto l'overlay */
+      z-index: 1; 
   }
   
-  /* ✨ MODIFICA: L'overlay è attivo e cattura i tocchi */
+  /* L'overlay è attivo e cattura i tocchi */
   .video-overlay {
       display: block; 
-      z-index: 2; /* Sta sopra il video */
-      /* Non ha pointer-events: none, quindi blocca i tocchi al video */
+      z-index: 2; 
   }
 
   .clients {
@@ -274,6 +277,10 @@ body.homepage {
       margin-right: 0;
   }
   
+  .clients > div {
+      flex-basis: auto; 
+  }
+
   .clients .colonna4 {
       text-align: left; 
       margin-top: 0;
