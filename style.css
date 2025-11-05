@@ -195,7 +195,7 @@ body.homepage {
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
-  gap: 40px; /* ✨ MODIFICA: Aumentato a 40px */
+  gap: 55px; /* Spazio tra colonne aumentato */
   max-width: none; 
 
   color: white; 
@@ -285,4 +285,5 @@ body.homepage {
   .clients .colonna3 {
       flex-basis: auto; 
   }
+
 }
