@@ -195,7 +195,7 @@ body.homepage {
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
-  gap: 20px; 
+  gap: 40px; /* ✨ MODIFICA: Aumentato a 40px */
   max-width: none; 
 
   color: white; 
@@ -207,11 +207,17 @@ body.homepage {
     mix-blend-mode: difference;
 }
 
-/* ✨ MODIFICA: Tre colonne di larghezza uguale */
+/* Tre colonne di larghezza uguale */
 .clients > div {
-    flex-basis: 33.33%; /* Divide lo spazio in 3 */
+    flex-basis: 33.33%; 
     flex-grow: 1;
     flex-shrink: 1;
+    
+    /* Bilancia le righe per evitare vedove */
+    text-wrap: balance;
+    
+    /* Permette la sillabazione */
+    hyphens: auto; 
 }
 
 .clients .colonna3 br:first-child {
@@ -279,6 +285,4 @@ body.homepage {
   .clients .colonna3 {
       flex-basis: auto; 
   }
-
-  /* Regola per colonna4 rimossa perché non esiste più */
 }
