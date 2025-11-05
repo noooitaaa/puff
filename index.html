@@ -14,7 +14,7 @@
         <div class="header-left">
             <a href="about.html" class="header-link">
                 Noa Merlini, Agnese Pozzobon, Martina Valente<br>
-                Graphic design and Creative development Studios
+                Graphic design and Creative development
             </a>
         </div>
         <div class="header-right">
@@ -95,30 +95,11 @@
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-        // Funzione per sbloccare i video (da usare alla PRIMA interazione)
-        function unlockVideos() {
-            videos.forEach(video => {
-                if (video.paused) {
-                    video.play();
-                }
-            });
-            // Rimuove i listener per eseguirlo solo una volta
-            window.removeEventListener('touchstart', unlockVideos, { capture: true });
-            window.removeEventListener('scroll', unlockVideos, { capture: true });
-        }
-
-        // Tenta l'autoplay standard
         videos.forEach(video => {
             video.play().catch(error => {
-                // Autoplay fallito (probabilmente Low Power Mode)
-                // Aggiungiamo i listener per sbloccarlo al primo tocco/scroll
-                if (isMobile) {
-                    window.addEventListener('touchstart', unlockVideos, { once: true, capture: true });
-                    window.addEventListener('scroll', unlockVideos, { once: true, capture: true });
-                }
+                console.log("Autoplay bloccato da browser:", error);
             });
 
-            // Aggiunge il click-per-audio SOLO su DESKTOP
             if (!isMobile) {
                 video.addEventListener('click', function() {
                     if (video.paused) {
