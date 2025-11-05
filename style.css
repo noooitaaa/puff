@@ -207,24 +207,17 @@ body.homepage {
     mix-blend-mode: difference;
 }
 
-/* ✨ MODIFICA: Rimossa la regola generica */
-/* .clients > div {
-    flex-basis: 25%; 
+/* ✨ MODIFICA: Ripristinata regola generica (flessibile) */
+.clients > div {
     flex-grow: 1;
-} */
+    flex-shrink: 1;
+    flex-basis: 0; /* Lascia che flex-grow gestisca la larghezza */
+}
 
-/* ✨ MODIFICA: Aggiunte regole specifiche per allargare colonna 1 */
+/* ✨ MODIFICA: Colonna 1 ha un peso leggermente maggiore */
 .clients .colonna1 {
-    flex-basis: 30%; /* Base più larga */
-    flex-grow: 2; /* Cresce il doppio delle altre */
+    flex-grow: 1.5; /* Leggermente più larga per evitare il ritorno a capo */
 }
-.clients .colonna2,
-.clients .colonna3,
-.clients .colonna4 {
-    flex-basis: 23%; /* Base leggermente più stretta */
-    flex-grow: 1; /* Crescita standard */
-}
-
 
 .clients .colonna3 br:first-child {
     display: none;
@@ -288,7 +281,7 @@ body.homepage {
       margin-right: 0;
   }
   
-  /* ✨ MODIFICA: Reset per il layout mobile */
+  /* Reset per il layout mobile */
   .clients .colonna1,
   .clients .colonna2,
   .clients .colonna3,
