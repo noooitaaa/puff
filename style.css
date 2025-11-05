@@ -148,6 +148,17 @@ body.homepage {
     visibility: hidden !important;
 }
 
+/* Overlay trasparente (invisibile su desktop) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    display: none; /* Nascosto di default */
+}
+
 
 .caption {
   position: absolute;
@@ -237,9 +248,13 @@ body.homepage {
       left: 10px;
   }
   
-  /* ✨ MODIFICA: Rende il video non interattivo su mobile */
+  /* ✨ MODIFICA: Rende il video non interattivo E attiva l'overlay */
   .video-toggle {
       pointer-events: none;
+  }
+  
+  .video-overlay {
+      display: block; 
   }
 
   .clients {
