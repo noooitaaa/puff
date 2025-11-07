@@ -124,14 +124,14 @@ body.homepage {
   display: block;
 }
 
-/* Cursore per il video cliccabile (solo desktop) */
+/* Il cursore "mano" appare solo su desktop */
 @media (hover: hover) {
     .video-toggle {
         cursor: pointer;
     }
 }
 
-/* ✨ MODIFICA: Nasconde il tasto Play di iOS in modo aggressivo */
+/* ✨ MODIFICA: Regola NUCLEARE per nascondere il tasto play di iOS */
 *::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
@@ -139,6 +139,8 @@ body.homepage {
 
 .video-toggle::-webkit-media-controls {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 /* Overlay trasparente (invisibile su desktop) */
@@ -151,6 +153,7 @@ body.homepage {
     z-index: 2; 
     display: none; 
 }
+
 
 .caption {
   position: absolute;
@@ -184,7 +187,7 @@ body.homepage {
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
-  gap: 55px; 
+  gap: 40px; 
   max-width: none; 
 
   color: white; 
@@ -196,13 +199,16 @@ body.homepage {
     mix-blend-mode: difference;
 }
 
-/* Tre colonne di larghezza uguale */
 .clients > div {
     flex-basis: 33.33%; 
     flex-grow: 1;
     flex-shrink: 1;
     text-wrap: balance;
     hyphens: auto; 
+}
+
+.clients .colonna3 br:first-child {
+    display: none;
 }
 
 /* ------------------------------------- */
@@ -248,7 +254,14 @@ body.homepage {
   .clients {
       flex-direction: column; 
       gap: 30px; 
+      
+      padding-left: 10px;
+      padding-right: 10px;
+      max-width: none; 
+      
       padding-top: 170px; 
+      margin-left: 0;
+      margin-right: 0;
   }
   
   .clients > div {
