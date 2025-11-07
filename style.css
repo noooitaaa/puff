@@ -195,7 +195,7 @@ body.homepage {
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
-  gap: 55px; /* Spazio tra colonne */
+  gap: 55px; 
   max-width: none; 
 
   color: white; 
@@ -207,9 +207,9 @@ body.homepage {
     mix-blend-mode: difference;
 }
 
-/* Tre colonne di larghezza uguale (33.33%) */
+/* 4 colonne di larghezza uguale */
 .clients > div {
-    flex-basis: 33.33%; 
+    flex-basis: 25%; 
     flex-grow: 1;
     flex-shrink: 1;
     
@@ -222,6 +222,11 @@ body.homepage {
 
 .clients .colonna3 br:first-child {
     display: none;
+}
+
+.clients .colonna4 {
+    text-align: left; 
+    margin-top: 0; 
 }
 
 /* ------------------------------------- */
@@ -245,6 +250,13 @@ body.homepage {
     margin-top: 10px; 
   }
   
+  /* ✨ MODIFICA: Aggiunto padding laterale alla galleria su mobile */
+  .gallery-container {
+      padding-left: 15px; 
+      padding-right: 15px; 
+      box-sizing: border-box; /* Evita che il padding allarghi la pagina oltre il 100% */
+  }
+
   .gallery-container.fullscreen {
       height: 100vh; 
   }
@@ -279,10 +291,16 @@ body.homepage {
       margin-right: 0;
   }
   
-  /* Assicura che il reset si applichi a tutte le 3 colonne */
+  /* Assicura che il reset si applichi a tutte le colonne */
   .clients .colonna1,
   .clients .colonna2,
-  .clients .colonna3 {
+  .clients .colonna3,
+  .clients .colonna4 {
       flex-basis: auto; 
+  }
+
+  .clients .colonna4 {
+      text-align: left; 
+      margin-top: 0;
   }
 }
