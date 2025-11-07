@@ -216,13 +216,13 @@
     
     
     <script>
+        const gallery = document.querySelector('.gallery-container');
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
         // Funzione che tenta di sbloccare TUTTI i video insieme
         function forcePlayAll() {
             videos.forEach(v => {
-                // Se è in pausa (es. bloccato da risparmio energetico), forza il play
                 if (v.paused) {
                     v.play().catch(e => { /* Ignora errori se ancora bloccato */ });
                 }
@@ -232,15 +232,26 @@
         // 1. Tenta subito al caricamento
         forcePlayAll();
 
-        // 2. Se siamo su mobile, aggiungi listener a TUTTO il documento
-        // per catturare il primissimo tocco ovunque
+        // 2. Se siamo su mobile:
         if (isMobile) {
+            // a) Scorri la galleria per l'effetto "peek"
+            if (gallery) {
+                gallery.scrollLeft = 150;
+            }
+            
+            // b) Aggiungi listener globali per sbloccare i video alla prima interazione
             ['touchstart', 'scroll', 'click'].forEach(evt => {
-                document.addEventListener(evt, forcePlayAll, { once: true, capture: true });
+                document.addEventListener(evt, () => {
+                    forcePlayAll();
+                    // Rimuovi i listener dopo il primo successo per non sovraccaricare
+                    ['touchstart', 'scroll', 'click'].forEach(e => 
+                        document.removeEventListener(e, forcePlayAll, { capture: true })
+                    );
+                }, { once: true, capture: true });
             });
         }
 
-        // Gestione click su Desktop (per audio)
+        // 3. Gestione click-to-unmute SOLO su Desktop
         if (!isMobile) {
             videos.forEach(video => {
                 video.addEventListener('click', function() {
