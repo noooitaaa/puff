@@ -195,7 +195,7 @@ body.homepage {
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
-  gap: 20px; 
+  gap: 55px; 
   max-width: none; 
 
   color: white; 
@@ -250,29 +250,29 @@ body.homepage {
     margin-top: 10px; 
   }
   
-  /* ✨ MODIFICA: Padding destro molto grande */
+  /* Padding solo a destra per fine galleria */
   .gallery-container {
       padding-left: 0; 
       padding-right: 150px; 
       box-sizing: border-box;
   }
-
+  
   .gallery-container.fullscreen {
       height: 100vh; 
   }
-  
-  /* ✨ MODIFICA: Slide più strette per mostrare la successiva */
+
+  /* ✨ MODIFICA: Larghezza automatica e zero margini */
   .image-slide {
-      width: 75vw; 
-      margin-right: 10px; 
+      width: auto; /* Lascia che l'immagine decida la larghezza */
+      margin-right: 0; /* Nessuno spazio tra le immagini */
   }
   
-  /* ✨ MODIFICA: Assicura che le immagini riempiano la nuova larghezza */
+  /* ✨ MODIFICA: Immagine si adatta all'altezza senza tagli */
   .image-slide img, 
   .image-slide video {
-      width: 100%;
+      width: auto;
       height: 100%;
-      object-fit: cover; 
+      object-fit: contain; /* Assicura che l'immagine sia interamente visibile */
   }
   
   .caption {
@@ -303,16 +303,10 @@ body.homepage {
       margin-right: 0;
   }
   
-  /* Assicura che il reset si applichi a tutte le colonne */
   .clients .colonna1,
   .clients .colonna2,
   .clients .colonna3,
   .clients .colonna4 {
       flex-basis: auto; 
-  }
-
-  .clients .colonna4 {
-      text-align: left; 
-      margin-top: 0;
   }
 }
