@@ -195,7 +195,7 @@ body.homepage {
   text-align: left; 
   display: flex; 
   justify-content: space-between; 
-  gap: 55px; 
+  gap: 20px; 
   max-width: none; 
 
   color: white; 
@@ -250,15 +250,29 @@ body.homepage {
     margin-top: 10px; 
   }
   
-  /* ✨ MODIFICA: Aggiunto padding laterale alla galleria su mobile */
+  /* ✨ MODIFICA: Padding destro molto grande */
   .gallery-container {
-      padding-left: 15px; 
-      padding-right: 15px; 
-      box-sizing: border-box; /* Evita che il padding allarghi la pagina oltre il 100% */
+      padding-left: 0; 
+      padding-right: 150px; 
+      box-sizing: border-box;
   }
 
   .gallery-container.fullscreen {
       height: 100vh; 
+  }
+  
+  /* ✨ MODIFICA: Slide più strette per mostrare la successiva */
+  .image-slide {
+      width: 75vw; 
+      margin-right: 10px; 
+  }
+  
+  /* ✨ MODIFICA: Assicura che le immagini riempiano la nuova larghezza */
+  .image-slide img, 
+  .image-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
   }
   
   .caption {
@@ -266,13 +280,11 @@ body.homepage {
       left: 10px;
   }
   
-  /* Il video ignora i tocchi */
   .video-toggle {
       pointer-events: none;
       z-index: 1; 
   }
   
-  /* L'overlay è attivo e cattura i tocchi */
   .video-overlay {
       display: block; 
       z-index: 2; 
