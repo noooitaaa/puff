@@ -42,7 +42,7 @@
     <div class="gallery-container fullscreen">
         <div class="image-wrapper">
         
-            <div class="image-slide"><img src="images/0_random.jpg" alt="0_random"></div>
+            <div class="image-slide"><img src="images/1_tavolo.jpg" alt="1_tavolo"></div>
             <div class="image-slide"><img src="images/2_camouflage.jpg" alt="2_camouflage"></div>
             <div class="image-slide"><img src="images/3_tesi_ma.jpg" alt="3_tesi_ma"></div>
             
@@ -216,38 +216,33 @@
     
     
     <script>
-        const gallery = document.querySelector('.gallery-container');
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-        // Funzione globale per sbloccare TUTTI i video al primo tocco
-        function unlockAllVideos() {
+        // Funzione che tenta di sbloccare TUTTI i video insieme
+        function forcePlayAll() {
             videos.forEach(v => {
-                // Forza il play se è in pausa (es. bloccato da Low Power Mode)
-                if (v.paused) v.play().catch(() => {}); 
+                // Se è in pausa (es. bloccato da risparmio energetico), forza il play
+                if (v.paused) {
+                    v.play().catch(e => { /* Ignora errori se ancora bloccato */ });
+                }
             });
-            // Rimuove i listener dopo il primo successo
-            ['touchstart', 'touchend', 'scroll', 'click'].forEach(evt => 
-                window.removeEventListener(evt, unlockAllVideos, { capture: true })
-            );
         }
 
-        // Scroll iniziale su mobile per effetto "peek"
-        if (isMobile && gallery) {
-             gallery.scrollLeft = 150;
-             // Aggiunge listener globali per sbloccare i video alla prima interazione
-             ['touchstart', 'touchend', 'scroll', 'click'].forEach(evt => 
-                window.addEventListener(evt, unlockAllVideos, { once: true, capture: true })
-             );
+        // 1. Tenta subito al caricamento
+        forcePlayAll();
+
+        // 2. Se siamo su mobile, aggiungi listener a TUTTO il documento
+        // per catturare il primissimo tocco ovunque
+        if (isMobile) {
+            ['touchstart', 'scroll', 'click'].forEach(evt => {
+                document.addEventListener(evt, forcePlayAll, { once: true, capture: true });
+            });
         }
 
-        // Gestione video standard
-        videos.forEach(video => {
-            // Tenta autoplay
-            video.play().catch(() => {}); 
-
-            // Click-to-unmute SOLO su desktop
-            if (!isMobile) {
+        // Gestione click su Desktop (per audio)
+        if (!isMobile) {
+            videos.forEach(video => {
                 video.addEventListener('click', function() {
                     if (video.paused) { 
                         video.play();
@@ -256,8 +251,8 @@
                         video.muted = !video.muted;
                     }
                 });
-            }
-        });
+            });
+        }
     </script>
     
   </body>
