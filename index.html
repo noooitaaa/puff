@@ -22,7 +22,7 @@
             <div class="header-location">Milan, Italy</div>
 
             <script>
-              // Script orologio
+              // Script orologio (invariato)
               window.onload = function() { horloge('div_horloge'); };
               function horloge(el) {
                 if (typeof el == "string") { el = document.getElementById(el); }
@@ -43,9 +43,7 @@
     <div class="gallery-container fullscreen">
         <div class="image-wrapper">
         
-            <div class="image-slide"><img src="images/0_random.jpg" alt="0_random"></div>
-        
-          
+            <div class="image-slide"><img src="images/1_tavolo.jpg" alt="1_tavolo"></div>
             <div class="image-slide"><img src="images/2_camouflage.jpg" alt="2_camouflage"></div>
             <div class="image-slide"><img src="images/3_tesi_ma.jpg" alt="3_tesi_ma"></div>
             
@@ -236,12 +234,12 @@
         </div>
     </div>
     
-    
     <script>
         const gallery = document.querySelector('.gallery-container');
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
+        // Funzione per sbloccare i video
         function unlockVideos() {
             videos.forEach(video => {
                 if (video.paused) {
@@ -252,6 +250,12 @@
             window.removeEventListener('scroll', unlockVideos, { capture: true });
         }
 
+        // SE È MOBILE: Scorri subito la galleria di 150px
+        if (isMobile && gallery) {
+             gallery.scrollLeft = 150;
+        }
+
+        // Gestione video (invariata)
         videos.forEach(video => {
             video.play().catch(error => {
                 if (isMobile) {
