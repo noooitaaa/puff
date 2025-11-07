@@ -22,7 +22,6 @@
             <div class="header-location">Milan, Italy</div>
 
             <script>
-              // Script orologio
               window.onload = function() { horloge('div_horloge'); };
               function horloge(el) {
                 if (typeof el == "string") { el = document.getElementById(el); }
@@ -43,7 +42,7 @@
     <div class="gallery-container fullscreen">
         <div class="image-wrapper">
         
-            <div class="image-slide"><img src="images/0_random.jpg" alt="1_tavolo"></div>
+            <div class="image-slide"><img src="images/1_tavolo.jpg" alt="1_tavolo"></div>
             <div class="image-slide"><img src="images/2_camouflage.jpg" alt="2_camouflage"></div>
             <div class="image-slide"><img src="images/3_tesi_ma.jpg" alt="3_tesi_ma"></div>
             
@@ -221,28 +220,33 @@
         const videos = document.querySelectorAll('.video-toggle');
         const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-        function unlockVideos() {
-            videos.forEach(video => {
-                if (video.paused) {
-                    video.play();
-                }
+        // Funzione globale per sbloccare TUTTI i video al primo tocco
+        function unlockAllVideos() {
+            videos.forEach(v => {
+                // Forza il play se è in pausa (es. bloccato da Low Power Mode)
+                if (v.paused) v.play().catch(() => {}); 
             });
-            window.removeEventListener('touchstart', unlockVideos, { capture: true });
-            window.removeEventListener('scroll', unlockVideos, { capture: true });
+            // Rimuove i listener dopo il primo successo
+            ['touchstart', 'touchend', 'scroll', 'click'].forEach(evt => 
+                window.removeEventListener(evt, unlockAllVideos, { capture: true })
+            );
         }
 
+        // Scroll iniziale su mobile per effetto "peek"
         if (isMobile && gallery) {
              gallery.scrollLeft = 150;
+             // Aggiunge listener globali per sbloccare i video alla prima interazione
+             ['touchstart', 'touchend', 'scroll', 'click'].forEach(evt => 
+                window.addEventListener(evt, unlockAllVideos, { once: true, capture: true })
+             );
         }
 
+        // Gestione video standard
         videos.forEach(video => {
-            video.play().catch(error => {
-                if (isMobile) {
-                    window.addEventListener('touchstart', unlockVideos, { once: true, capture: true });
-                    window.addEventListener('scroll', unlockVideos, { once: true, capture: true });
-                }
-            });
+            // Tenta autoplay
+            video.play().catch(() => {}); 
 
+            // Click-to-unmute SOLO su desktop
             if (!isMobile) {
                 video.addEventListener('click', function() {
                     if (video.paused) { 
